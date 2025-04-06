@@ -1,19 +1,19 @@
 import tkinter as tk
 
 def SC ():
-    import sacos.IDESC as IDESC
+    import IDESC
     windowse.quit()
 
 def rd ():
-    import sacos.randome as randome
+    import randome
     windowse.quit()
 
 def sc ():
-    import sacos.speakcactus as speakcactus
+    import speakcactus
     windowse.quit()
 
 def Nn ():
-    import sacos.internet as internet
+    import internet
 
 
 windowse = tk.Tk()

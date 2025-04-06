@@ -19,13 +19,13 @@ def verifier_connexion():
     utilisateurs = charger_utilisateurs()
     if identifiant in utilisateurs and utilisateurs[identifiant] == mot_de_passe:
         messagebox.showinfo("Bienvenue", f"Bienvenue, {identifiant}!")
-        import sacos.bp as bp
+        import bp
     else:
         messagebox.showerror("Erreur", "Identifiant ou mot de passe incorrect.")
 
 def ouvrir_page_principale():
     connexion_window.destroy()
-    import sacos.bp as bp
+    import bp
 
 def ouvrir_creation_compte():
     creation_window = tk.Toplevel(connexion_window)

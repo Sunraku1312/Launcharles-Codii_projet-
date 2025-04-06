@@ -13,14 +13,13 @@ ROUGE = (255, 0, 0)
 BLEU = (0, 0, 255)
 VERT = (0, 255, 0)
 NOIR = (0, 0, 0)
+ORANGE = (255, 165, 0)
 
 raquette_largeur = 100
 raquette_hauteur = 15
 raquette_vitesse = 10
 
 balle_radius = 10
-balle_vitesse_x = 5
-balle_vitesse_y = -5
 
 raquette = pygame.Rect(largeur_fenetre // 2 - raquette_largeur // 2, hauteur_fenetre - raquette_hauteur - 10, raquette_largeur, raquette_hauteur)
 
@@ -29,6 +28,24 @@ nb_briques_lignes = 5
 nb_briques_colonnes = 8
 brique_largeur = largeur_fenetre // nb_briques_colonnes - 10
 brique_hauteur = 30
+
+class Particle:
+    def __init__(self, x, y, couleur, taille=5):
+        self.x = x
+        self.y = y
+        self.couleur = couleur
+        self.taille = taille
+        self.vitesse_x = random.randint(-3, 3)
+        self.vitesse_y = random.randint(-3, 3)
+        self.duree = random.randint(20, 40)
+
+    def update(self):
+        self.x += self.vitesse_x
+        self.y += self.vitesse_y
+        self.duree -= 1
+
+    def draw(self):
+        pygame.draw.circle(screen, self.couleur, (self.x, self.y), self.taille)
 
 def create_briques():
     briques.clear()
@@ -42,25 +59,26 @@ def draw_briques():
         pygame.draw.rect(screen, BLEU, brique)
 
 def game():
-    global balle_vitesse_x, balle_vitesse_y
+    balle_dx = random.choice([5, -5])  # Direction X aléatoire
+    balle_dy = random.choice([5, -5])  # Direction Y aléatoire
     balle_x = largeur_fenetre // 2
     balle_y = hauteur_fenetre - 50
-    balle_dx = balle_vitesse_x
-    balle_dy = balle_vitesse_y
 
     raquette_dx = 0
-    running = True
     score = 0
     clock = pygame.time.Clock()
 
     create_briques()
 
-    while running:
+    particules = []
+
+    while True:
         screen.fill(NOIR)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                pygame.quit()
+                quit()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and raquette.left > 0:
@@ -89,19 +107,26 @@ def game():
                 balle_dy = -balle_dy
                 briques.remove(brique)
                 score += 10
+
+                for _ in range(20):
+                    particules.append(Particle(brique.centerx, brique.centery, ORANGE))
+
                 if len(briques) == 0:
                     create_briques()
-                    balle_vitesse_x += 1
-                    balle_vitesse_y -= 1
-                    balle_dx = balle_vitesse_x
-                    balle_dy = balle_vitesse_y
 
         if balle_y > hauteur_fenetre:
-            running = False
-            game()
+            game()  # Relancer le jeu quand la balle tombe
+
+        for p in particules[:]:
+            p.update()
+            if p.duree <= 0:
+                particules.remove(p)
 
         pygame.draw.rect(screen, VERT, raquette)
         pygame.draw.circle(screen, ROUGE, (balle_x, balle_y), balle_radius)
+
+        for p in particules:
+            p.draw()
 
         draw_briques()
 
