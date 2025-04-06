@@ -2,7 +2,7 @@ import pygame
 import sys
 
 def projet_final():
-    print("Lancement du Projet Final...")
+    print("Lancement du sacos...")
     pygame.quit()
 
 def rapple():
@@ -62,7 +62,7 @@ def ia():
 pygame.init()
 
 largeur = 500
-hauteur = 650
+hauteur = 850
 ecran = pygame.display.set_mode((largeur, hauteur))
 pygame.display.set_caption("Launcharles")
 
@@ -78,7 +78,7 @@ hauteur_bouton = 50
 marge_bouton = 10
 
 textes_boutons = [
-    "Projet Final", "Rapple", "Flappy Bird", "Racecar", "Minecraft 3D",
+    "projet final", "Rapple", "Flappy Bird", "Racecar", "Minecraft 3D",
     "Dino IA", "Minecrafty", "Clikeurs", "Casse-Bricks", "Racourci", "Calculatrice", "Sacos"
 ]
 
