@@ -1,7 +1,7 @@
 # Launcharles-Codii_projet
 
 
-voici le fichier qui contient tout mes script python pour le concoure de codii en cour de devlopement 
+voici le fichier qui contient tout mes script python pour le concoure de codii en cour de devlopement pour le lancer il faut executer le fichier annimationsunraku.py
 
 
 la pluspart des jeux ne contienne aucun bug (mais peut etre des faute d'orthographe) mais si vous en trouver veuiller me lesindiquer sur le discorde de codii en me mensionnant @sunraku
