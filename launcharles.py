@@ -2,7 +2,7 @@ import pygame
 import sys
 
 def projet_final():
-    print("Lancement du sacos...")
+    print("Lancement du Projet Final...")
     pygame.quit()
 
 def rapple():
@@ -59,10 +59,14 @@ def ia():
     pygame.quit()
     import sacos.acceuille as acceuille
 
+def platforme():
+    pygame.quit()
+    import jeu_de_platforme
+
 pygame.init()
 
 largeur = 500
-hauteur = 850
+hauteur = 550
 ecran = pygame.display.set_mode((largeur, hauteur))
 pygame.display.set_caption("Launcharles")
 
@@ -78,8 +82,10 @@ hauteur_bouton = 50
 marge_bouton = 10
 
 textes_boutons = [
-    "projet final", "Rapple", "Flappy Bird", "Racecar", "Minecraft 3D",
-    "Dino IA", "Minecrafty", "Clikeurs", "Casse-Bricks", "Racourci", "Calculatrice", "Sacos"
+    "Projet Final", "Rapple", "Flappy Bird", "Racecar", "Minecraft 3D",
+    "Dino IA", "Minecrafty", "Clikeurs", "Casse-Bricks", "Racourci", "Calculatrice", "Sacos",
+    "Platformer", "Rien", "Rien", "Rien", "Rien", "Rien", "Rien", "Rien",
+    "Rien", "Rien", "Rien", "Rien", "Rien", "Rien"
 ]
 
 font = pygame.font.SysFont('Arial', 20)
@@ -101,13 +107,19 @@ def dessiner_fond():
 
 def afficher_interface():
     run = True
+    nb_colonnes = 3
+    nb_boutons = len(textes_boutons)
+    boutons_par_colonne = nb_boutons // nb_colonnes
     while run:
         ecran.fill(gris_clair)
         dessiner_fond()
 
-        for i in range(len(textes_boutons)):
-            x = (largeur - largeur_bouton) // 2
-            y = 50 + (hauteur_bouton + marge_bouton) * i
+        for i in range(nb_boutons):
+            colonne = i // boutons_par_colonne
+            ligne = i % boutons_par_colonne
+            x = (largeur // nb_colonnes) * colonne + (largeur_bouton // 2) - largeur_bouton // 2
+            y = 50 + (hauteur_bouton + marge_bouton) * ligne
+            
             bouton_rect = pygame.Rect(x, y, largeur_bouton, hauteur_bouton)
             mouse_x, mouse_y = pygame.mouse.get_pos()
 
@@ -122,12 +134,18 @@ def afficher_interface():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     mouse_x, mouse_y = pygame.mouse.get_pos()
-                    for i in range(len(textes_boutons)):
-                        x = (largeur - largeur_bouton) // 2
-                        y = 50 + (hauteur_bouton + marge_bouton) * i
+                    for i in range(nb_boutons):
+                        colonne = i // boutons_par_colonne
+                        ligne = i % boutons_par_colonne
+                        x = (largeur // nb_colonnes) * colonne + (largeur_bouton // 2) - largeur_bouton // 2
+                        y = 50 + (hauteur_bouton + marge_bouton) * ligne
+                        
                         bouton_rect = pygame.Rect(x, y, largeur_bouton, hauteur_bouton)
                         if clic_sur_bouton(mouse_x, mouse_y, bouton_rect):
-                            jeux[i]()
+                            if i < 13:
+                                jeux[i]()
+                            else:
+                                print(f"Le bouton {textes_boutons[i]} ne mène à rien.")
                             run = False
         
         pygame.display.update()
@@ -146,7 +164,8 @@ jeux = {
     8: jeu2,
     9: jeu3,
     10: jeu4,
-    11: ia
+    11: ia,
+    12: platforme
 }
 
 afficher_interface()
