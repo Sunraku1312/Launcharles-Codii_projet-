@@ -79,6 +79,10 @@ def mot_de_passe():
     pygame.quit()
     import mot_de_passe
 
+def temp():
+    pygame.quit()
+    import temp
+
 pygame.init()
 
 largeur = 550
@@ -100,7 +104,7 @@ marge_bouton = 10
 textes_boutons = [
     "Projet Final", "Rapple", "Flappy Bird", "Racecar", "Minecraft 3D",
     "Dino IA", "Minecrafty", "Clikeurs", "Casse-Bricks", "Racourci", "Calculatrice", "Sacos",
-    "Platformer", "action", "jeu de la vie", "tetris", "paword game", "Rien", "Rien", "Rien",
+    "Platformer", "action", "jeu de la vie", "tetris", "paword game", "Temp depuis ...", "Rien", "Rien",
     "Rien", "Rien", "Rien", "Rien", "Rien", "Rien"
 ]
 
@@ -158,7 +162,7 @@ def afficher_interface():
                         
                         bouton_rect = pygame.Rect(x, y, largeur_bouton, hauteur_bouton)
                         if clic_sur_bouton(mouse_x, mouse_y, bouton_rect):
-                            if i < 17:
+                            if i < 18:
                                 jeux[i]()
                             else:
                                 print(f"Le bouton {textes_boutons[i]} ne mène à rien.")
@@ -185,7 +189,8 @@ jeux = {
     13: action,
     14: conway,
     15: tetris,
-    16: mot_de_passe
+    16: mot_de_passe,
+    17: temp
 }
 
 afficher_interface()
