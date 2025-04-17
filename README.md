@@ -22,4 +22,6 @@ le minecrafty (qui est un minecraft en 2D) est inspirer d'un programme sur numwo
 le dino IA est une IA qui ne peut pas faire de score gigantesque par se que le jeu est imposible (je ne sais pas pourquoi j'ai fait ça)
 
 
-et le race car IAest une IA qui marche mais je ne sais pas comment vous partager sa Q-table (donc vous devez l'entrainez vous meme en laissant tourner le jeu pendant environt 50 heure pour que l'IA soit imbatable)
+et le racecar IA est une IA qui marche mais je ne sais pas comment vous partager sa Q-table (donc vous devez l'entrainez vous meme en laissant tourner le jeu pendant environt 50 heure pour que l'IA soit imbatable)
+
+certain jeux sont inspirer de https://neal.fun que je vous conseille vraiment d'aller voir si vous savez bien parler anglais
