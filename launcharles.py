@@ -75,9 +75,13 @@ def tetris():
     pygame.quit()
     import tetris
 
+def mot_de_passe():
+    pygame.quit()
+    import mot_de_passe
+
 pygame.init()
 
-largeur = 500
+largeur = 550
 hauteur = 550
 ecran = pygame.display.set_mode((largeur, hauteur))
 pygame.display.set_caption("Launcharles")
@@ -96,7 +100,7 @@ marge_bouton = 10
 textes_boutons = [
     "Projet Final", "Rapple", "Flappy Bird", "Racecar", "Minecraft 3D",
     "Dino IA", "Minecrafty", "Clikeurs", "Casse-Bricks", "Racourci", "Calculatrice", "Sacos",
-    "Platformer", "action", "jeu de la vie", "tetris", "Rien", "Rien", "Rien", "Rien",
+    "Platformer", "action", "jeu de la vie", "tetris", "paword game", "Rien", "Rien", "Rien",
     "Rien", "Rien", "Rien", "Rien", "Rien", "Rien"
 ]
 
@@ -154,7 +158,7 @@ def afficher_interface():
                         
                         bouton_rect = pygame.Rect(x, y, largeur_bouton, hauteur_bouton)
                         if clic_sur_bouton(mouse_x, mouse_y, bouton_rect):
-                            if i < 16:
+                            if i < 17:
                                 jeux[i]()
                             else:
                                 print(f"Le bouton {textes_boutons[i]} ne mène à rien.")
@@ -180,7 +184,8 @@ jeux = {
     12: platforme,
     13: action,
     14: conway,
-    15: tetris
+    15: tetris,
+    16: mot_de_passe
 }
 
 afficher_interface()
