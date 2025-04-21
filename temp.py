@@ -39,7 +39,6 @@ def calculer():
                     f"Distance parcourue par la Terre autour du Soleil (en km): {int(distance_terre_soleil)}\n" \
                     f"Age biologique estimé (en années): {age_biologique}\n"
 
-        # Ajout des 20 autres résultats
         resultats += f"Calories brûlées approximativement (au repos, en kcal): {int(jours * 1800)}\n" \
                      f"Nombre de pas approximatif (en moyenne 7000 pas/jour): {int(jours * 7000)}\n" \
                      f"Nombre de respirations approximatives (en moyenne 16 respirations/minute): {int(jours * 86400 * 16)}\n" \
